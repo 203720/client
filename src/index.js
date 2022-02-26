@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Login from './components/login/Login';
 import Register from './components/register/Register';
 // import App from './App';
 import reportWebVitals from './reportWebVitals';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Axios para back
 import axios from 'axios';
@@ -12,8 +13,7 @@ import axios from 'axios';
 ReactDOM.render(
   <React.StrictMode>
     {/* <App /> */}
-    <Login />
-    <Register/>
+    <Register />
   </React.StrictMode>,
   document.getElementById('root')
 );
