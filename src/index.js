@@ -8,11 +8,12 @@ import reportWebVitals from './reportWebVitals';
 
 // Axios para back
 import axios from 'axios';
+import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
     {/* <App /> */}
-    <Login />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

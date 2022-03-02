@@ -1,7 +1,15 @@
 import axios from "axios";
 import './Register.css';
+import { Link } from "react-router-dom";
 
 function Register(){
+
+    const obtener_local =()=>{
+        
+        alert(localStorage.getItem('token'))
+        localStorage.removeItem('token')
+      }
+      
     const consume_register=()=> {
 
         var postData = {
@@ -13,7 +21,7 @@ function Register(){
             last_name: document.getElementById('last_name').value
         }
 
-        axios.post("http://localhost:8000/api/v1/register",postData, {Headers:{"Content-Type":"Application/json",},}).then((response) => {
+        axios.post("http://localhost:8000/api/v1/register/",postData, {Headers:{"Content-Type":"Application/json", 'Authorization':'Bearer my-token',},}).then((response) => {
           console.log(response.data);
         }).catch((error) => {
             console.log(error.response.data);
@@ -66,12 +74,12 @@ function Register(){
                             <label class="form-label" for="typePasswordX">Password2</label>
                             </div>
 
-                            <button class="btn btn-outline-light btn-lg px-5" type="submit" onClick={consume_register}>Register</button>
+                            <button class="btn btn-outline-light btn-lg px-5" type="submit" onClick={obtener_local}>Register</button>
 
                         </div>
 
                         <div>
-                            <p class="mb-0">Have an account? <a href="." class="text-white-50 fw-bold">LogIn</a></p>
+                            <p class="mb-0">Don't have an account? <Link to="/Login" class="text-white-50 fw-bold">Sign Up</Link></p>
                         </div>
 
                         </div>

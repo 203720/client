@@ -1,6 +1,7 @@
 import axios from "axios";
 import './Login.css';
 import Register from '../register/Register';
+import { Link } from "react-router-dom";
 
 function Login() {
 
@@ -11,14 +12,13 @@ function Login() {
       password: document.getElementById('password').value
     }
 
-    axios.post("http://localhost:8000/api/v1/login",postData, {Headers:{"Content-Type":"Application/json",},}).then((response) => {
-      alert("Bienvenido");
-      console.log(response.data.token);
-      
+    axios.post("http://localhost:8000/api/v1/login",postData, {Headers:{"Content-Type":"Application/json",},}).then(response => {
+      alert(response.data.token)
+      localStorage.setItem('token', response.data.token)
+
+      window.location="http://localhost:3000/Register";
     }).catch((error) => {
-      alert(error.data);
-      console.log(error.data.password[0]);
-      console.log(error.data.username[0]);
+      alert("Error. "+ error.response.data);
     })
   };
 
@@ -52,7 +52,7 @@ function Login() {
                   </div>
 
                   <div>
-                    <p class="mb-0">Don't have an account? <a href="." class="text-white-50 fw-bold">Sign Up</a></p>
+                    <p class="mb-0">Don't have an account? <Link to="/Register" class="text-white-50 fw-bold">Sign Up</Link></p>
                   </div>
 
                 </div>
