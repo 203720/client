@@ -259,7 +259,7 @@ function Profile() {
                                 <button id="done_btn" class="btn btn-outline-primary" type="submit" onClick={done_User}>Hecho</button>
                                 <button id="update_btn" class="btn btn-outline-primary" type="submit" onClick={update_User}>Actualizar</button> 
                             </div>
-                            <div class="input-group" style={{'margin-top':'50px'}}>
+                            <div class="input-group" style={{'margin-top':'30px'}}>
                                 <input class="form-control" accept="image/png, image/jpeg" type="file" id="img"></input>
 
                                 <button onClick={delete_img} id="delete_btn" class="btn btn-outline-danger" type="button">Delete</button>
