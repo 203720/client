@@ -130,7 +130,6 @@ function Profile() {
             }
         )
         .catch((error)=>{
-            console.log(error.response.data)
             alert("Error al actualizar imagen");
         })
         
@@ -151,7 +150,6 @@ function Profile() {
             }
         )
         .catch((error)=>{
-            console.log(error.response.data)
             alert("Error al eliminar imagen");
         })
     };

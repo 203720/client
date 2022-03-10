@@ -16,7 +16,6 @@ function Login() {
       localStorage.setItem('token', value.token);
       localStorage.setItem('id_user', value.user_id);
     } catch (error) {
-      console.log(error.response.data)
     }
   }
 

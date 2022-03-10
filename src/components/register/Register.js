@@ -28,7 +28,6 @@ function Register(){
             window.location="/login/";
         })
         .catch((error) => {
-            console.log(error.response.data)
             alert("No se pudo registrar. Registre los datos correctamente")
         })
     }
