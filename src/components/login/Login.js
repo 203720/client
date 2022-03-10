@@ -1,9 +1,24 @@
 import axios from "axios";
 import './Login.css';
-import Register from '../register/Register';
 import { Link } from "react-router-dom";
 
 function Login() {
+
+  const requestOptions = {
+    method: 'GET',
+    headers: { 
+        'Content-Type': 'application/json',
+    },  
+  };
+
+  const setLocalStorage = (value) => {
+    try {
+      localStorage.setItem('token', value.token);
+      localStorage.setItem('id_user', value.user_id);
+    } catch (error) {
+      console.log(error.response.data)
+    }
+  }
 
   const consume_login = () => {
 
@@ -12,93 +27,65 @@ function Login() {
       password: document.getElementById('password').value
     }
 
-    axios.post("http://localhost:8000/api/v1/login",postData, {Headers:{"Content-Type":"Application/json",},}).then(response => {
-      alert(response.data.token)
-      localStorage.setItem('token', response.data.token)
+    var url = "http://localhost:8000/api/v1/login";
 
-      window.location="http://localhost:3000/Register";
-    }).catch((error) => {
-      alert("Error. "+ error.response.data);
+    axios.post(url,postData, requestOptions)
+    .then((response) => {
+      setLocalStorage(response.data)
+      window.location="/profile";
+    })
+    .catch((error) => {
+      var aux = error.response.data.non_field_errors;
+      if (aux == null) {
+        alert("Ingrese los datos de todos los campos")
+      } else {
+        alert("No existe un usuario con esos datos")
+      }
     })
   };
 
   return (
-    
     <div>
-      <section class="gradient-custom">
+      <section class="vh-100 gradient-custom">
         <div class="container py-5 h-100">
-          <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="row justify-content-center align-items-center h-100">
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-              <div class="card bg-dark text-white" style={{'border-radius': '1rem'}}>
-                <div class="card-body p-5 text-center">
+              <div class="card shadow-2-strong card-registration" style={{'border-radius': '15px'}}>
 
-                  <div class="mb-md-5 mt-md-4 pb-5">
+                <div class="card-body p-4 p-md-5">
+                  <h2 class="mb-4 pb-2 pb-md-0 mb-md-5">Login Form</h2>
 
-                    <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
-                    <p class="text-white-50 mb-5"></p>
-
-                    <div class="form-outline form-white mb-4">
-                      <input type="text" id="username" class="form-control form-control-lg" required/>
-                      <label class="form-label" for="typeEmailX">Username</label>
+                    <div class="form-outline">
+                      <input type="text"class="form-control form-control-lg" id="username" required/>
+                      <label class="form-label" for="userName">Username</label>
                     </div>
 
                     <div class="form-outline form-white mb-4">
-                      <input type="password" class="form-control form-control-lg" id="password" required />
-                      <label class="form-label" for="typePasswordX">Password</label>
+                      <input type="password"class="form-control form-control-lg" id="password" required />
+                      <label class="form-label" for="password">Password</label>
                     </div>
 
-                    <button class="btn btn-outline-light btn-lg px-5" type="submit" onClick={consume_login}>Login</button>
+                    <div class="pt-1 mb-4">
+                      <button class="btn btn-outline-primary d-grid gap-2 col-6 mx-auto" type="submit" value="Submit" onClick={consume_login}>Login</button>
+                    </div>
 
+                    <div>
+                        <p class="mb-0">Don't have an account? <Link to="/Register" class="text-black-50 fw-bold">Sign Up</Link></p>
+                    </div>
+                    </div>
                   </div>
-
-                  <div>
-                    <p class="mb-0">Don't have an account? <Link to="/Register" class="text-white-50 fw-bold">Sign Up</Link></p>
-                  </div>
-
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div>
+          <div>
         </div>
       </section>
+
+
+
     </div>
 
-
-
-
-
-    // <div>
-    //   <header className="App-header">
-    //     <button onClick={consume_login}> Login </button>
-    //   </header>
-    // </div>
-
-    // <div class = "container">
-    //     <div class="row g-3">
-          
-    //       <div class="col-md-4">
-    //           <label class="form-label">Username</label>
-    //           <div class="input-group has-validation">
-    //           <input type="text" class="form-control" id="username" aria-describedby="inputGroupPrepend" required/>
-    //           </div>
-    //       </div>
-    //       <div class="mb-3">
-    //           <label for="exampleInputPassword1" class="form-label">Password</label>
-    //           <input type="password" class="form-control" id="password" required/>
-    //       </div>
-    //     </div>
-    //       <header className="App-header">
-    //       <button type="submit" class="btn btn-primary" onClick={consume_login}>Register</button>
-    //           {/* <button onClick={consume_register}> Register </button> */}
-    //       </header>
-    // </div>
-
-
-    
   );
-
 };
 
 export default Login;

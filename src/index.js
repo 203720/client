@@ -1,19 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Login from './components/login/Login';
-import Register from './components/register/Register';
-// import App from './App';
-import reportWebVitals from './reportWebVitals';
-
-// Axios para back
-import axios from 'axios';
 import App from './App';
+import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <App /> */}
-    <App />
+    { <App /> }
   </React.StrictMode>,
   document.getElementById('root')
 );
