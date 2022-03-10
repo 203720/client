@@ -83,7 +83,7 @@ function Register(){
                                         <div class="col-md-6 mb-4">
                                             <div class="form-outline">
                                                 <input type="password" id="password2" class="form-control form-control-lg" />
-                                                <label class="form-label" for="password">Confirme su contraseña</label>
+                                                <label class="form-label" for="password">Confirm your password</label>
                                             </div>
                                         </div>
                                     </div>

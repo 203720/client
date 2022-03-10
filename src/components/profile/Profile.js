@@ -255,16 +255,16 @@ function Profile() {
                         </div>     
                         <div class="conf">
                             <div class="d-grid gap-2 d-md-flex justify-content-md-center" role="group">
-                                <button id="edit_btn" class="btn btn-outline-primary" type="submit" onClick={mod_User}>Modificar</button> 
-                                <button id="done_btn" class="btn btn-outline-primary" type="submit" onClick={done_User}>Hecho</button>
-                                <button id="update_btn" class="btn btn-outline-primary" type="submit" onClick={update_User}>Actualizar</button> 
+                                <button id="edit_btn" class="btn btn-outline-primary" type="submit" onClick={mod_User}>Change</button> 
+                                <button id="done_btn" class="btn btn-outline-primary" type="submit" onClick={done_User}>Done</button>
+                                <button id="update_btn" class="btn btn-outline-primary" type="submit" onClick={update_User}>Update</button> 
                             </div>
                             <div class="input-group" style={{'margin-top':'30px'}}>
                                 <input class="form-control" accept="image/png, image/jpeg" type="file" id="img"></input>
 
-                                <button onClick={delete_img} id="delete_btn" class="btn btn-outline-danger" type="button">Delete</button>
+                                <button onClick={delete_img} id="delete_btn" class="btn btn-outline-danger" type="button">Delete img</button>
 
-                                <button id="upload_btn" class="btn btn-outline-primary" onClick={consume_img}>Upload</button> 
+                                <button id="upload_btn" class="btn btn-outline-primary" onClick={consume_img}>Upload img</button> 
                             </div>
                         </div>         
                         </div>
