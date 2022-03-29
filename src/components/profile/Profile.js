@@ -49,7 +49,7 @@ function Profile() {
 
     window.onload = function visualize_data(){
 
-        var user = localStorage.getItem('id_user');
+        user = localStorage.getItem('id_user');
 
         var img_default = "https://th.bing.com/th/id/OIP.u76n8EaazLkSDCzUbzFsUQHaHa?pid=ImgDet&rs=1";
         var url1 = "http://localhost:8000/api/v1/profile/user/"+user+"/";
@@ -271,6 +271,6 @@ function Profile() {
             </section>
         </div>
     );
-};
+}
 
 export default Profile;
